@@ -1,4 +1,6 @@
 \documentclass[]{beamer}
+% \documentclass[notes]{beamer}       % print frame + notes
+% \setbeameroption{show notes on second screen}
 \usepackage[utf8]{inputenc}
 \usepackage[T1]{fontenc}
 \usepackage{carlito}
@@ -28,6 +30,16 @@
 \begin{frame}
 \frametitle{Definicja problemu}
 % \vspace{-1cm}
+  \note{
+    \textbf{Wstęp, wprowadzenie do prezentacji}
+
+    \begin{enumerate}
+      \item Celem przedsięwzięcia informatycznego jest wytworzenie wartości,
+      \item wartość wytwarza się poprzez dostarczenie danego produktu (aplikacji, usługi, urządzenia, itp),
+      \item krytyczną informacją dla osoby wytwarzającej produkt jest wiedza o tym, jak dobrze produkt działa,
+    \end{enumerate}
+  }
+
 \begin{multicols}{2}
   \begin{enumerate}
     \item Tworzymy produkt,
@@ -46,6 +58,15 @@
 
 \begin{frame}
 \frametitle{Uszczegółowienie problemu}
+  \note{
+    \begin{enumerate}
+      \item Zagadnienie zdefiniowania definicji ,,produkt działa'' i ujęcia jej w mierzalne metryki.
+      \item rozwiązania do monitorowania stanu działania usług znane są od dawna,
+      \item możliwe jest rozszerzenie zagadnienia monitorowania stanu uług o monitorowanie również \textit{jakości} działania,
+            oraz o metryki związane z domeną biznesową realizowaną przez produkt.
+      \item informacje o stanie produktu są bardzo ważne w przypadku wystąpienia awarii w środowisku produkcyjnym.
+    \end{enumerate}
+  }
 \vspace{-1cm}
 
 Co to znaczy, że nasz produkt \textbf{działa}?
@@ -62,6 +83,14 @@ Co to znaczy, że nasz produkt \textbf{działa}?
 \begin{frame}
   \frametitle{A gdy już zdaży się awaria?}
 
+  \note{
+
+    \begin{enumerate}
+      \item Wyliczenie czarnych scenariuszy, na które powinniśmy być przygotowani, jeśli utrzymujemy jakikolwiek system produkcyjny,
+      \item Monitorowanie pozwala na ograniczenie szkód w przypadku wystąpienia awarii,
+      \item Wymierna wiedza (w formie metryk) o stanie produktu pozwala stwierdzić, czy problem rzeczywiście został naprawiony.
+    \end{enumerate}
+  }
   \vspace{-1cm}
   \begin{itemize}
     \item Powiadomienie o wystąpieniu awarii,
@@ -74,6 +103,23 @@ Co to znaczy, że nasz produkt \textbf{działa}?
 
 \begin{frame}
   \frametitle{Co monitorujemy? \cite{gartner}} 
+
+  \note{
+    \textbf{Zdefiniowanie pojęcia \textit{Observability}}
+    \begin{enumerate}
+      \item Monitorowanie różnych poziomów infrastruktury:
+        \begin{itemize}
+          \item Platformy (hardware), na której znajdują się usługi,
+          \item Aplikacje/usługi jako źródło metryk,
+          \item Metryki związane z funkcjami biznesowymi systemu (aktywność użytkowników, wykorzystywane funkcje).
+        \end{itemize}
+      \item To, jak skutecznie system emituje dane o tym, jak sprawnie działa, nazywamy \textbf{\textit{Observability}}.
+    \end{enumerate}
+
+    \begin{quote}
+      Observability is a measure of how well internal states of a system can be inferred from knowledge of its external outputs.
+    \end{quote}
+  }
 
   \vspace{-1cm}
   \begin{enumerate}
@@ -96,8 +142,17 @@ Co to znaczy, że nasz produkt \textbf{działa}?
   \end{enumerate}
 \end{frame}
 
+\section{\textit{Observability} w praktyce}
+
 \begin{frame}
   \frametitle{\textit{Observability} jako standardowy element infrastruktury projektowej}
+  \note{
+    \begin{enumerate}
+      \item Obecność komponentów związanych z monitoringiem i \textit{observability} jest zalecana przez ekspertów \cite{ibm},
+      \item Poza zbieraniem danych zaleca się również automatyczne wykrywanie nieregularności/anomalii, często z wykorzystaniem sztucznej inteligencji,
+      \item Dane \textit{observability} umożliwiają również wykrywanie włamań do systemów informatycznych.
+    \end{enumerate}
+  }
   \begin{figure}
     \centering
     \includegraphics[width=0.6\linewidth]{cloud_architecture_proposal.jpg}
@@ -106,16 +161,44 @@ Co to znaczy, że nasz produkt \textbf{działa}?
 \end{frame}
 
 \begin{frame}
+  \note{
+    \begin{enumerate}
+      \item Każdy system emituje jakieś dane (nawet najzwyklejszy \texttt{access.log} w serwerze \textit{webowym}),
+      \item możliwe jest poprawienie \text{observability} systemu, jeśli poza logami system będzie produkował także:
+        \begin{itemize}
+          \item liczbowe metryki (czas wykonania \texttt{requestu http}, średni rozmiar odpowiedzi, liczba połączeń do bazy danych)
+          \item zdarzenia: ustrukturyzowane wiadomości wysyłane do systemu monitorującego,
+          \item korelacje: w przypadku systemu zdecentralizowanego pozwalają na zrozumienie przepływu informacji przez system.
+        \end{itemize}
+    \end{enumerate}
+  }
   \frametitle{Jakie są źródła danych dla systemu monitorującego?}
   \begin{enumerate}
     \item Logi generowane przez usługi,
     \item metryki pobierane z usług,
     \item zdarzenia (\textit{events}) emitowane przez system.
+    \item informacje pozwalające na skorelowanie wydarzeń pomiędzy systemami.
   \end{enumerate}
+
+  \begin{center}
+    \large
+    Wnioskowanie o \textbf{stanie wewnętrznym} systemu na podstawie \textbf{emitowanych przez niego danych} to
+    \textbf{\textit{Observability}}!
+  \end{center}
 \end{frame}
 
 \begin{frame}
   \frametitle{Od monitoringu do \textit{applied observability}}
+  \note{
+    \textbf{Czynniki zwiększające parcie na stosowanie \textit{observability}:}
+    \begin{enumerate}
+      \item Uruchamianie aplikacji w chmurze (często wielu chmurach),
+      \item decentralizacja (serwery, mikroserwisy, aplikacje webowe, aplikacje mobilne),
+      \item coraz wyższe wymagania użytkowników jeśli chodzi o stałą dostępność usług,
+      \item możliwość pozyskiwania danych \textit{observability} z urządzeń klienckich,
+      \item źródło wiedzy przy podejmowaniu decyzji biznesowych/finansowych.
+    \end{enumerate}
+  }
 
   % \quote{https://www.gartner.com/smarterwithgartner/how-to-start-an-it-monitoring-initiative}
   % \quote{By 2021, 60% of IT monitoring investments will include a focus on business-relevant metrics, up from less than 20\% in 2017.}
@@ -138,6 +221,13 @@ Co to znaczy, że nasz produkt \textbf{działa}?
 
 \begin{frame}[fragile]
   \frametitle{Bardzo niski koszt wprowadzenia \textit{observability}}
+  \note{
+    Przykład ilustruący wprowadzenie observability
+    wewnątrz frameworka \texttt{Flask} w języku \texttt{Python}.
+
+    Konfiguracja biblioteki pozwalającej na eksportowanie metryk do systemu \textit{Prometheus}
+    oraz zbieranie czasu wykonania z \textit{endpointu API} to praktycznie zerowy koszt dla programisty.
+  }
 
   \vspace{-0.2cm}
   \begin{minted}{python}
@@ -160,7 +250,11 @@ def example_endpoint():
 \end{frame}
 
 \begin{frame}
-  \frametitle{Po konfiguracji w systemie \textit{Prometheus}}
+  \frametitle{Po konfiguracji w systemie \texttt{Prometheus}}
+  \note{System monitorujący, taki jak \texttt{Prometheus} pozwala na przechowywanie wartości metryk w czasie oraz ich wizualizację.
+
+  Metryki są automatycznie grupowane, dostępne są także złożone opcje filtrowania i korelacji (przedstawione dalej w prezentacji).
+  }
 
   \begin{figure}
     \centering
@@ -181,6 +275,24 @@ def example_endpoint():
 
 \begin{frame}
   \frametitle{Popularne rozwiązania do monitorowania infrastruktury IT}
+  \note{
+    \textbf{Przegląd popularnych narzędzi: \textit{Grafana}}
+
+    \begin{enumerate}
+      \item Wsparcie wielu popularnych źródeł danych:
+        \begin{itemize}
+          \item \texttt{PostgreSQL},
+          \item \texttt{Prometheus},
+          \item \texttt{InfluxDB},
+          \item \texttt{Elasticsearch}.
+          \item \texttt{Azure Cloud}.
+          \item \texttt{Google Cloud}.
+        \end{itemize}
+      \item Wizualizacja w formie zróżnicowanego zbioru wykresów i paneli.
+      \item Wbudowany system pozwalający na zdefiniowanie reguł alertowania na podstawie wizualizowanych danych.
+      \item Wysyłanie powiadomień, wiele wspieranych serwisów (mail, komunikatory).
+    \end{enumerate}
+  }
   \begin{figure}
     \centering
     \includegraphics[width=0.8\linewidth]{grafana_website.jpg}
@@ -190,6 +302,16 @@ def example_endpoint():
 
 \begin{frame}
   \frametitle{Popularne rozwiązania do monitorowania infrastruktury IT}
+  \note{
+    \textbf{Przegląd popularnych narzędzi: \textit{Loki}}
+    \begin{enumerate}
+      \item pobieranie danych z wielu maszyn jednocześnie,
+      \item wsparcie dla kontenerów \texttt{docker},
+      \item język \texttt{LogQL} do filtrowania logów,
+      \item integracja z \textit{Grafaną} i systemami alertowania.
+    \end{enumerate}
+
+  }
   \begin{figure}
     \centering
     \includegraphics[width=0.8\linewidth]{loki.jpg}
@@ -200,6 +322,14 @@ def example_endpoint():
 
 \begin{frame}
   \frametitle{Popularne rozwiązania do monitorowania infrastruktury IT}
+  \note{
+    \textbf{Przegląd popularnych narzędzi: \textit{Prometheus}}
+  \begin{enumerate}
+    \item pobieranie metryk poprzez wysyłanie zapytań \texttt{http},
+    \item gotowe biblioteki generujące metryki we wszystkich popularnych językach programowania,
+    \item gotowe eksportery danych dla 3ch najbardziej popularnych systemów operacyjnych.
+  \end{enumerate}
+  }
   \begin{figure}
     \centering
     \includegraphics[width=0.8\linewidth]{prometheus.jpg}
@@ -210,6 +340,14 @@ def example_endpoint():
 
 \begin{frame}
   \frametitle{Popularne rozwiązania do monitorowania infrastruktury IT}
+  \note{
+    \textbf{Przegląd popularnych narzędzi: \textit{InfluxDB}}
+    \begin{enumerate}
+      \item przechowywanie danych typu \texttt{time-series},
+      \item intuicyjny język do pisania zapytań -- \texttt{Flux},
+      \item baza danych typu \texttt{NoSQl}.
+    \end{enumerate}
+  }
   \begin{figure}
     \centering
     \includegraphics[width=0.9\linewidth]{influxdb.jpg}
@@ -217,9 +355,39 @@ def example_endpoint():
   \end{figure}
 \end{frame}
 
+\begin{frame}
+  \frametitle{Popularne rozwiązania do monitorowania infrastruktury IT}
+  \note{
+    \textbf{Przegląd popularnych narzędzi: \textit{Grafana Tempo}}
+    \begin{enumerate}
+      \item eksporacja zdecentralizowanych danych,
+      \item wykorzystywanie kluczy/tokenów korelacji.
+      \item wyszukiwanie awarii/problemów w architekturze opartej o mikrousługi.
+    \end{enumerate}
+  }
+  \begin{figure}
+    \centering
+    \includegraphics[width=0.9\linewidth]{grafana_tempo.png}
+    \caption{Grafana Tempo -- eksploracja zdecentrowalizowanych danych \textit{observability}.}
+  \end{figure}
+\end{frame}
+
 \section{Monitorowanie własnej infrastruktury}
 
 \begin{frame}
+
+  \note{
+    \textbf{Przykład praktyczny:} autor prezentacji hostuje własne usługi na prywatnym serwerze virtualnym (VPS):
+    \begin{enumerate}
+      \item prywatna chmura plików,
+      \item silnik wyszukiwania (łączy informacje z popularnych wyszukiwarek i usuwa reklamy),
+      \item proxy do serwisu youtube (szybciej ładuje filmy, usuwa reklamy),
+      \item serwer chatu \texttt{Matrix} (zdecentralizowany protokół do komunikacji).
+    \end{enumerate}
+
+    Serwer oraz usługi działające na nim są monitorowane za pomocą rozwiązań \textit{observability}: \texttt{Prometheusa} i \texttt{Grafany}.
+  }
+
   \frametitle{Przykład -- monitorowanie własnej infrastruktury}
   \begin{figure}
     \centering
@@ -230,6 +398,9 @@ def example_endpoint():
 
 \begin{frame}
   \frametitle{Przykład -- monitorowanie własnej infrastruktury}
+  \note{
+    Strona domowa systemu monitorowania pokazuje status wszystkich usług oraz najbardziej podstawowe metryki.
+  }
   \begin{figure}
     \centering
     \includegraphics[width=1.0\linewidth]{grafana_dashboard_main.jpg}
@@ -239,6 +410,11 @@ def example_endpoint():
 
 \begin{frame}
   \frametitle{Przykład -- monitorowanie własnej infrastruktury}
+  \note{
+    Panel prezentujący metryki pobierane z systemu operacyjnego.
+    Zarówno metryki jak i panel z wizualizacjami są gotowymi produktami -- dostępnymi \textit{out of the box}
+    w systemach \texttt{Prometheus} i \texttt{Grafana}.
+  }
   \begin{figure}
     \centering
     \includegraphics[width=1.0\linewidth]{grafana_node_exporter.jpg}
@@ -248,6 +424,10 @@ def example_endpoint():
 
 \begin{frame}
   \frametitle{Przykład -- monitorowanie własnej infrastruktury}
+  \note{
+    Panel prezentujący metryki pobierane serwera webowego, również dostępny jako ,,gotowiec''.
+    Pozwala na monitorowanie aktywności użytkowników serwera i śledzenie sprawności działania usług.
+  }
   \begin{figure}
     \centering
     \includegraphics[width=1.0\linewidth]{grafana_caddy.jpg}
@@ -257,6 +437,11 @@ def example_endpoint():
 
 \begin{frame}
   \frametitle{Przykład -- monitorowanie własnej infrastruktury}
+  \note{
+    Przykładowa anomalia zauważona na wykresie podczas przygotowywania prezentacji.
+
+    Nie wpłynęła na sprawność działania serwera, najprawdopodobniej był to automatyczny skan serwera.
+  }
   \begin{figure}
     \centering
     \includegraphics[width=1.0\linewidth]{grafana_caddy_example_incident.jpg}
@@ -264,17 +449,24 @@ def example_endpoint():
   \end{figure}
 \end{frame}
 
-\begin{frame}
-  \frametitle{Przykład -- monitorowanie własnej infrastruktury}
-  \begin{figure}
-    \centering
-    \includegraphics[width=1.0\linewidth]{grafana_matrix_python_gc.jpg}
-    \caption{Metryki dotyczące \textit{garbage collectora} w aplikacji \textit{Synapse} -- serwer protokołu \textit{Matrix} napisany w języku \textit{Python}.}
-  \end{figure}
-\end{frame}
+% \begin{frame}
+%   \frametitle{Przykład -- monitorowanie własnej infrastruktury}
+%   \begin{figure}
+%     \centering
+%     \includegraphics[width=1.0\linewidth]{grafana_matrix_python_gc.jpg}
+%     \caption{Metryki dotyczące \textit{garbage collectora} w aplikacji \textit{Synapse} -- serwer protokołu \textit{Matrix} napisany w języku \textit{Python}.}
+%   \end{figure}
+% \end{frame}
 
 \begin{frame}
   \frametitle{Monitorowanie już na poważnie}
+  \note{
+    \begin{enumerate}
+      \item zrzut ekranu panelu monitorującego w pracy autora wpisu (uzyskany za zgodą lidera zespołu).
+      \item przykład awarii usługi API, wykryty za pomocą metryk mierzących czas przetwarzania zapytania.
+      \item pionowe linie pokazują aktywność systemów alertowania.
+    \end{enumerate}
+  }
   \begin{figure}
     \centering
     \includegraphics[width=1.0\linewidth]{grafana_request_duration_incident_example.png}
