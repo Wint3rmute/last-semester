@@ -1,0 +1,117 @@
+\documentclass[]{beamer}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{carlito}
+\usetheme[horizontal=true, hr=false, pagenumbers=true]{NewPwr}
+\usepackage{bibentry}
+\usepackage{minted}
+\setminted{fontsize=\small,baselinestretch=1}
+\usepackage{multicol}
+\usepackage{polski}
+
+% Build-specific command
+\nonstopmode
+
+%Information to be included in the title page:
+\title{Aplikacja do projektowania gier karcianych}
+\subtitle{Warsztaty -- zarządzanie projektem}
+\author{Mateusz Bączek, Michał Rajkowski}
+\institute{Politechnika Wrocławska}
+\date{2023}
+
+\begin{document}
+
+\frame{\titlepage}
+
+% \section{Wstęp teoretyczny}
+
+\begin{frame}
+\frametitle{Gry planszowe}
+  \begin{figure}
+    \centering
+    \includegraphics[width=0.7\linewidth]{board_game.jpg}
+    % \caption{Logo \textit{PJM interconnection}}
+  \end{figure}
+  \vspace{-0.5cm}
+
+\end{frame}
+
+\begin{frame}
+\frametitle{Gry karciane}
+
+  \begin{multicols}{2}
+
+    \begin{itemize}
+      \item Szeroki zbiór kart,
+      \item skomplikowana mechanika,
+      \item trudno jest ,,utrzymać'' balans w grze.
+    \end{itemize}
+  \begin{figure}
+    \centering
+    \includegraphics[width=0.7\linewidth]{gathering.jpg}
+    \caption{Kart z popularnej gry \textit{Magic: The Gathering}.}
+  \end{figure}
+  \vspace{-0.5cm}
+  \end{multicols}
+
+\end{frame}
+
+\begin{frame}
+\frametitle{Założenia projektu}
+% \vspace{-1cm}
+%   \textbf{Z informacji o zbiorze danych, który znaleźliśmy:} \\
+%   \begin{quote}
+% Interconnection grid operating an electric transmission system serving all or parts of Delaware, Illinois, Indiana, Kentucky, Maryland, Michigan, New Jersey, North Carolina, Ohio, Pennsylvania, Tennessee, Virginia, West Virginia, and the District of Columbia.
+%   \end{quote}
+
+  \begin{multicols}{2}
+  \begin{figure}
+    \centering
+    \includegraphics[width=0.8\linewidth]{red_dragon.jpg}
+    % \caption{Grafika reklamowa firmy \textit{Elastic}, tworzącej rozwiązania monitorujące.}
+  \end{figure}
+
+  \begin{enumerate}
+    \item System do projektowania kart do gry,
+    \item możliwość filtrowania kart według atrybutów,
+    \item silnik do generowania kart, wykorzystujący spójny szablon graficzny,
+    \item tworzenie i zapisywanie kart,
+    \item działanie w środowisku chmurowym,
+  \end{enumerate}
+  \end{multicols}
+
+\end{frame}
+
+\begin{frame}
+  \centering
+  \huge{
+    Dziękujemy za uwagę!}
+\end{frame}
+
+% \begin{frame}
+%   \begin{thebibliography}{99} % Beamer does not support BibTeX so references must be nserted manually as below
+%   \bibitem[Pourmajidi, 2023]{ibm} Pourmajidi, William and Zhang, Lei and Steinbacher, John and Erwin, Tony and Miranskyy, Andriy (2023)
+%   \newblock A Reference Architecture for Observability and Compliance of Cloud Native Applications
+%   \newblock \emph{Toronto Metropolitan University, University of Maryland, Baltimore County, USA, IBM Canada Lab, Toronto, Canada, IBM Cloud Platform, Austin, USA}
+%   \newblock \url{https://www.gartner.com/smarterwithgartner/how-to-start-an-it-monitoring-initiative}
+
+%   \bibitem[Perri, 2022]{gartner} Lori perri (2022)
+%   \newblock Monetizing Observable Data Will Separate the Winners and Losers
+%   \newblock \emph{Gartner Insights}
+%   \newblock \url{https://gartner.com/en/articles/monetizing-observable-data-will-separate-the-winners-and-losers}
+
+%   \end{thebibliography}
+% \end{frame}
+
+% \begin{frame}
+%   \begin{thebibliography}{99} % Beamer does not support BibTeX so references must be nserted manually as below
+%   \bibitem[Shetty, 2017]{gartner2} Sony Shetty (2017)
+%   \newblock How to Start an IT Monitoring Initiative
+%   \newblock \emph{Gartner Insights}
+%   \newblock \url{https://www.gartner.com/smarterwithgartner/how-to-start-an-it-monitoring-initiative}
+
+%   \end{thebibliography}
+% \end{frame}
+
+\end{document}
+
