@@ -1,0 +1,9 @@
+services:
+  notebook:
+    build:
+      context: .
+    ports:
+      - 8888:8888
+    volumes:
+      - ./src:/home/jupyter/notebook/src
+    command: poetry run jupyter lab --ip 0.0.0.0 --collaborative
