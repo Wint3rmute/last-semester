@@ -8,9 +8,13 @@
 \setminted{fontsize=\small,baselinestretch=1}
 \usepackage{multicol}
 \usepackage{polski}
+\usepackage{setspace}
 
 % Build-specific command
 \nonstopmode
+
+\onehalfspacing
+% \doublespacing
 
 %Information to be included in the title page:
 \title{Przewidywanie zapotrzebowania na energię na podstawie danych \textit{PJM Interconnection LLC}}
@@ -30,48 +34,95 @@
   \begin{figure}
     \centering
     \includegraphics[width=0.3\linewidth]{pjm-logo.png}
+    \vspace{-0.3cm}
     \caption{Logo \textit{PJM interconnection}}
   \end{figure}
   \vspace{-0.5cm}
   \begin{figure}
     \centering
     \includegraphics[width=0.6\linewidth]{rto_map.jpg}
+    \vspace{-0.3cm}
     \caption{Operatorzy sieci elektrycznej na terenie Stanów Zjednoczonych.}
   \end{figure}
 
 \end{frame}
 
 \begin{frame}
-\frametitle{PJM Interconnection LLC}
-% \vspace{-1cm}
-  \textbf{Z informacji o zbiorze danych, który znaleźliśmy:} \\
-  \begin{quote}
-Interconnection grid operating an electric transmission system serving all or parts of Delaware, Illinois, Indiana, Kentucky, Maryland, Michigan, New Jersey, North Carolina, Ohio, Pennsylvania, Tennessee, Virginia, West Virginia, and the District of Columbia.
-  \end{quote}
+\frametitle{Raport z postępów -- wykonane zadania}
+
+  \begin{enumerate}
+    \item Weryfikacja spójności zbioru danych:
+      \begin{itemize}
+        \item ciągłość danych,
+        \item występowanie anomalii,
+        \item puste (\textit{null}) wartości,
+      \end{itemize}
+    \item wyliczenie rozkładów normalnych dla danych:
+      \begin{itemize}
+        \item weryfikacja czy dane dopasowują się do rozkładu normalnego,
+        \item sprawdzenie skośności danych,
+      \end{itemize}
+  \end{enumerate}
+
+\end{frame}
+
+
+\begin{frame}
+  \frametitle{Przegląd danych}
 
   \begin{figure}
     \centering
-    \includegraphics[width=0.8\linewidth]{dataset-cover.jpg}
-    % \caption{Grafika reklamowa firmy \textit{Elastic}, tworzącej rozwiązania monitorujące.}
+    \includegraphics[width=0.5\linewidth]{pie_chart.jpg}
+    % \vspace{-0.3cm}
+    \caption{Podział liczby pomiarów ze względu na dostawcę.}
   \end{figure}
 
 \end{frame}
 
+
+
+
 \begin{frame}
-\frametitle{Cele projektu}
-\vspace{-1cm}
+  \frametitle{Ciągłość danych}
 
+  \begin{figure}
+    \centering
+    \includegraphics[width=0.6\linewidth]{consistency.jpg}
+    % \vspace{-0.3cm}
+    \caption{Częstotliwość pomiarów jest spójna w przeważającej większości datasetu.}
+  \end{figure}
 
-\begin{enumerate}
-  \item Przewidywanie zużycia energii na dzień do przodu,
-  \item testy przewidywania w dłuższej perspektywie czasowej (kilka dni/tydzień),
-  \item sprawdzenie trendów zużycia energii podczas świąt, wakacji, itd.
-  \item przetestowanie skuteczności różnych modeli predykcyjnych,
-  \item przetestowanie sprawności modelu na danych od innego dostawcy energetycznego (jeśli uda się znaleźć).
-\end{enumerate}
 \end{frame}
 
-\section{Bibliografia}
+
+\begin{frame}
+  \frametitle{Rozkład danych}
+
+  \begin{figure}
+    \centering
+    \begin{multicols}{2}
+      \includegraphics[width=1.0\linewidth]{histogram_1.jpg}
+      \includegraphics[width=1.0\linewidth]{histogram_2.jpg}
+    \end{multicols}
+    % \vspace{-0.3cm}
+    \caption{
+      Zużycie energii ma rozkład ujemno skośny we wszystkich zbiorach.
+    }
+  \end{figure}
+
+\end{frame}
+
+
+% \begin{enumerate}
+%   \item Przewidywanie zużycia energii na dzień do przodu,
+%   \item testy przewidywania w dłuższej perspektywie czasowej (kilka dni/tydzień),
+%   \item sprawdzenie trendów zużycia energii podczas świąt, wakacji, itd.
+%   \item przetestowanie skuteczności różnych modeli predykcyjnych,
+%   \item przetestowanie sprawności modelu na danych od innego dostawcy energetycznego (jeśli uda się znaleźć).
+% \end{enumerate}
+% \end{frame}
+
+% \section{Bibliografia}
 
 \begin{frame}
   \centering
@@ -79,30 +130,6 @@ Interconnection grid operating an electric transmission system serving all or pa
     Dziękujemy za uwagę!}
 \end{frame}
 
-% \begin{frame}
-%   \begin{thebibliography}{99} % Beamer does not support BibTeX so references must be nserted manually as below
-%   \bibitem[Pourmajidi, 2023]{ibm} Pourmajidi, William and Zhang, Lei and Steinbacher, John and Erwin, Tony and Miranskyy, Andriy (2023)
-%   \newblock A Reference Architecture for Observability and Compliance of Cloud Native Applications
-%   \newblock \emph{Toronto Metropolitan University, University of Maryland, Baltimore County, USA, IBM Canada Lab, Toronto, Canada, IBM Cloud Platform, Austin, USA}
-%   \newblock \url{https://www.gartner.com/smarterwithgartner/how-to-start-an-it-monitoring-initiative}
-
-%   \bibitem[Perri, 2022]{gartner} Lori perri (2022)
-%   \newblock Monetizing Observable Data Will Separate the Winners and Losers
-%   \newblock \emph{Gartner Insights}
-%   \newblock \url{https://gartner.com/en/articles/monetizing-observable-data-will-separate-the-winners-and-losers}
-
-%   \end{thebibliography}
-% \end{frame}
-
-% \begin{frame}
-%   \begin{thebibliography}{99} % Beamer does not support BibTeX so references must be nserted manually as below
-%   \bibitem[Shetty, 2017]{gartner2} Sony Shetty (2017)
-%   \newblock How to Start an IT Monitoring Initiative
-%   \newblock \emph{Gartner Insights}
-%   \newblock \url{https://www.gartner.com/smarterwithgartner/how-to-start-an-it-monitoring-initiative}
-
-%   \end{thebibliography}
-% \end{frame}
 
 \end{document}
 
