@@ -10,5 +10,6 @@ WORKDIR /home/jupyter/notebook
 RUN echo "Only the contents of the /src directory are persisted in this docker container!" > DO_NOT_CREATE_FILES_HERE.txt
 RUN poetry add jupyterlab
 RUN poetry add pandas scikit-learn matplotlib numpy
+RUN poetry add prefixspan
 
 
