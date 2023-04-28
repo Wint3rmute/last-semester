@@ -51,16 +51,14 @@
 \frametitle{Raport z postępów -- wykonane zadania}
 
   \begin{enumerate}
-    \item Weryfikacja spójności zbioru danych:
+    \item Dekompozycja zbioru uczącego:
       \begin{itemize}
-        \item ciągłość danych,
-        \item występowanie anomalii,
-        \item puste (\textit{null}) wartości,
+        \item pory roku,
+        \item weryfikacja różnych charakterystyk linii trendu,
       \end{itemize}
-    \item wyliczenie rozkładów normalnych dla danych:
+    \item Predykcja:
       \begin{itemize}
-        \item weryfikacja czy dane dopasowują się do rozkładu normalnego,
-        \item sprawdzenie skośności danych,
+        \item regresja z wykorzystaniem sieci neuronowej,
       \end{itemize}
   \end{enumerate}
 
@@ -68,45 +66,66 @@
 
 
 \begin{frame}
-  \frametitle{Przegląd danych}
+  \frametitle{Dekompozycja zbioru uczacego}
 
   \begin{figure}
     \centering
-    \includegraphics[width=0.5\linewidth]{pie_chart.jpg}
-    % \vspace{-0.3cm}
-    \caption{Podział liczby pomiarów ze względu na dostawcę.}
+    \includegraphics[width=0.99\linewidth]{zima.png}
+    \caption{Przegląd danych zebranych podczas zimy.}
   \end{figure}
 
 \end{frame}
 
-
-
-
 \begin{frame}
-  \frametitle{Ciągłość danych}
+  \frametitle{Dekompozycja zbioru uczacego}
 
   \begin{figure}
     \centering
-    \includegraphics[width=0.6\linewidth]{consistency.jpg}
-    % \vspace{-0.3cm}
-    \caption{Częstotliwość pomiarów jest spójna w przeważającej większości datasetu.}
+    \includegraphics[width=0.99\linewidth]{lato.png}
+    \caption{Przegląd danych zebranych podczas lata.}
   \end{figure}
 
 \end{frame}
 
 
 \begin{frame}
-  \frametitle{Rozkład danych}
+  \frametitle{Predykcja}
 
   \begin{figure}
     \centering
-    \begin{multicols}{2}
-      \includegraphics[width=1.0\linewidth]{histogram_1.jpg}
-      \includegraphics[width=1.0\linewidth]{histogram_2.jpg}
-    \end{multicols}
-    % \vspace{-0.3cm}
+    \includegraphics[width=0.70\linewidth]{neuronki.png}
+    \caption{Sieć neuronowa trenowana na danych.}
+  \end{figure}
+
+\end{frame}
+
+
+\begin{frame}
+  \frametitle{Predykcja}
+  \begin{figure}
+    \centering
+    \includegraphics[width=0.8\linewidth]{pred_lato.png}
+    \caption{Przykładowa predykcja dla danych z okresu letniego.}
+  \end{figure}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Predykcja}
+  \begin{figure}
+    \centering
+    \includegraphics[width=0.8\linewidth]{pred_zima.png}
+    \caption{Przykładowa predykcja dla danych z okresu zimowego.}
+  \end{figure}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Analiza predykcji}
+
+  \begin{figure}
+    \centering
+      \includegraphics[width=0.6\linewidth]{analiza_jakas_dziwna.png}
     \caption{
-      Zużycie energii ma rozkład ujemno skośny we wszystkich zbiorach.
+      Porównanie wartości przewidywanych z prawdziwymi.
     }
   \end{figure}
 
