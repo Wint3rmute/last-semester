@@ -1,0 +1,24 @@
+[tool.poetry]
+name = "energy-usage-prediction-web-app"
+version = "0.1.0"
+description = ""
+authors = ["wint3rmute <mateusz.baczek1998@gmail.com>"]
+readme = "README.md"
+packages = [{include = "energy_usage_prediction_web_app"}]
+
+[tool.poetry.dependencies]
+python = ">=3.10,<3.11"
+streamlit = "^1.22.0"
+pandas = "^2.0.1"
+scikit-learn = "^1.2.2"
+matplotlib = "^3.7.1"
+statsmodels = "^0.13.5"
+tensorflow = "^2.12.0"
+
+
+[tool.poetry.group.dev.dependencies]
+jupyterlab = "^3.6.3"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
