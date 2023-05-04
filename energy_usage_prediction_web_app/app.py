@@ -1,4 +1,5 @@
 import datetime
+import matplotlib.dates as mdates
 from io import BytesIO
 from pathlib import Path
 
@@ -40,24 +41,55 @@ def decompose(df):
     st.pyplot()
 
 
-def przewidywania_gartnera(model, df,  predict, in_size):
+def przewidywania_gartnera(model, df, num_of_predictions, in_size):
     real_y = df["Usage"]
 
-    y = list(real_y)[:-predict]
-    x = list(df.index)[:-predict]
+    y = list(real_y)[:-num_of_predictions]
+    x = list(df.index)[:-num_of_predictions]
 
-    for i in range(predict):
+    for i in range(num_of_predictions):
         inp = np.array([y[-in_size:]])
         value = model.predict(inp, verbose=False).flatten()[0]
         y.append(value)
         x.append(x[-1] + datetime.timedelta(hours=1))
 
+    fig, axs = plt.subplots()
+    ax = axs
 
-    plt.plot(x[-predict * 2 :], y[-predict * 2 :], label="Predykcja")
-    plt.plot(df.index[-predict * 2:], real_y[-predict * 2 :], label="Prawdziwe wartości")
-    plt.scatter(
-        x[-predict -1], real_y[len(x) - predict - 1], c="r", label="Start"
+    ax.plot(
+        x[-num_of_predictions * 2 :], y[-num_of_predictions * 2 :], label="Predykcja"
     )
+
+    # This snippet will show the real values along with the preduction
+    ax.plot(
+        df.index[-num_of_predictions * 2 :],
+        real_y[-num_of_predictions * 2 :],
+        label="Prawdziwe wartości",
+    )
+    
+    # This snipet cuts of the real values at the point when prediction begins.
+    # Creates a more "real" feeling of actually predicting new data, could be
+    # nice during the presentation
+    # ax.plot(
+    #     df.index[
+    #         -num_of_predictions * 2 : -num_of_predictions * 2 + num_of_predictions
+    #     ],
+    #     real_y[-num_of_predictions * 2 : -num_of_predictions * 2 + num_of_predictions],
+    #     label="Prawdziwe wartości",
+    # )
+
+    ax.scatter(
+        x[-num_of_predictions - 1],
+        real_y[len(x) - num_of_predictions - 1],
+        c="r",
+        label="Start",
+    )
+
+    ax.xaxis.set_major_formatter(
+        mdates.ConciseDateFormatter(ax.xaxis.get_major_locator())
+    )
+
+    # plt.tight_layout(rect=[0, 0.03, 1, 0.95])
     plt.legend()
     st.pyplot()
 
@@ -92,4 +124,7 @@ if uploaded_file is not None:
         decompose(df[decomposition_start_date:decomposition_end_date])
 
     with prediction_tab:
-        przewidywania_gartnera(model, df, 101, 10 * 24)
+        prediction_start_date = st.date_input(
+            "Date to predict to:", datetime.date(2010, 1, 1)
+        )
+        przewidywania_gartnera(model, df[:prediction_start_date], 50, 10 * 24)
