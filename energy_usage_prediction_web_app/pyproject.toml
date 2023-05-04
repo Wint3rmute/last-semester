@@ -7,7 +7,7 @@ readme = "README.md"
 packages = [{include = "energy_usage_prediction_web_app"}]
 
 [tool.poetry.dependencies]
-python = ">=3.10,<3.11"
+python = ">=3.10,<3.12"
 streamlit = "^1.22.0"
 scikit-learn = "^1.2.2"
 matplotlib = "^3.7.1"
