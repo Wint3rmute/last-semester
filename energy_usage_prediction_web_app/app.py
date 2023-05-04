@@ -40,17 +40,23 @@ def decompose(df):
     st.pyplot()
 
 
-def przewidywania_gartnera(model, real_y, predict, in_size):
+def przewidywania_gartnera(model, df,  predict, in_size):
+    real_y = df["Usage"]
+
     y = list(real_y)[:-predict]
+    x = list(df.index)[:-predict]
+
     for i in range(predict):
         inp = np.array([y[-in_size:]])
         value = model.predict(inp, verbose=False).flatten()[0]
         y.append(value)
-    x = list(range(len(real_y)))
+        x.append(x[-1] + datetime.timedelta(hours=1))
+
+
     plt.plot(x[-predict * 2 :], y[-predict * 2 :], label="Predykcja")
-    plt.plot(x[-predict * 2 :], real_y[-predict * 2 :], label="Prawdziwe wartości")
+    plt.plot(df.index[-predict * 2:], real_y[-predict * 2 :], label="Prawdziwe wartości")
     plt.scatter(
-        len(x) - predict - 1, real_y[len(x) - predict - 1], c="r", label="Start"
+        x[-predict -1], real_y[len(x) - predict - 1], c="r", label="Start"
     )
     plt.legend()
     st.pyplot()
@@ -86,4 +92,4 @@ if uploaded_file is not None:
         decompose(df[decomposition_start_date:decomposition_end_date])
 
     with prediction_tab:
-        przewidywania_gartnera(model, df["Usage"], 101, 10 * 24)
+        przewidywania_gartnera(model, df, 101, 10 * 24)
