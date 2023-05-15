@@ -28,7 +28,7 @@
 
 
 \begin{frame}
-  \frametitle{Sztuka generatywna}
+  \frametitle{Sztuka generatywna, algorytmiczna kompozycja muzyki}
 
   \begin{multicols}{2}
 
@@ -38,76 +38,59 @@
   \end{figure}
 
   \begin{figure}
-    \includegraphics[width=0.9\linewidth]{ronin.png}
-    \caption{Rekursywna spirala wygenerowana w programie \textit{Ronin}.}
-  \end{figure}
-
-  \end{multicols}
-\end{frame}
-
-\begin{frame}
-  \frametitle{Algorytmiczna kompozycja muzyki}
-
-  \begin{multicols}{2}
-  \begin{figure}
     \includegraphics[width=0.8\linewidth]{riffusion_spectro.jpg}
     \caption{Spektrogram wygenerowany za pomocą algorytmu \textit{Stable Riffusion}.}
   \end{figure}
-  \begin{figure}
-    \includegraphics[width=0.6\linewidth]{lamus_notes.jpg}
-    \caption{Zapis nutowy utworu wygenerowany przez komputer \textit{Lamus}.}
-  \end{figure}
 
   \end{multicols}
 \end{frame}
-
 
 \begin{frame}
   \frametitle{Popularne podejścia do kompozycji algorytmicznej}
 
   \begin{enumerate}
-    \item Generowanie zapisu nutowego \cite{language_models_drummers}:
-      \begin{itemize}
-        \item wykorzystuje reguły matematyczne oparte o teorię muzyki,
-        \item generuje zapis symboliczny, który łatwo później wykorzystać.
-      \end{itemize}
-    \item Generowanie pełnego pliku audio \cite{riffusion}:
-      \begin{itemize}
-        \item teoretycznie najbardziej imponujący efekt działania,
-        \item małe możliwości wykorzystania rezultatu algorytmu.
-      \end{itemize}
-    \item Symulacja instrumentów za pomocą sieci neuronowych \cite{nsynth}:
-      \begin{itemize}
-        \item potencjalnie bardzo szeroka gama generowanych brzmień,
-        \item małe możliwości dostosowania brzmienia,
-        \item słaby wgląd we ,,wnętrze'' wygenerowanego algorytmu DSP.
-      \end{itemize}
+    \item Generowanie zapisu nutowego \cite{language_models_drummers},
+      % \begin{itemize}
+      %   \item wykorzystuje reguły matematyczne oparte o teorię muzyki,
+      %   \item generuje zapis symboliczny, który łatwo później wykorzystać.
+      % \end{itemize}
+    \item Generowanie pełnego pliku audio \cite{riffusion},
+      % \begin{itemize}
+      %   \item teoretycznie najbardziej imponujący efekt działania,
+      %   \item małe możliwości wykorzystania rezultatu algorytmu.
+      % \end{itemize}
+    \item Symulacja instrumentów za pomocą sieci neuronowych \cite{nsynth}.
+      % \begin{itemize}
+      %   \item potencjalnie bardzo szeroka gama generowanych brzmień,
+      %   \item małe możliwości dostosowania brzmienia,
+      %   \item słaby wgląd we ,,wnętrze'' wygenerowanego algorytmu DSP.
+      % \end{itemize}
   \end{enumerate}
 \end{frame}
 
-\begin{frame}
-  \frametitle{Elementy kompozycji muzycznej (w uproszczeniu)}
-  \begin{figure}[H]
-    \centering\small
-    \begin{center}
-    \begin{tikzpicture}
-      \begin{scope}[blend group = soft light]
-        \fill[red!30!white]    ( 90:1.5) circle (1.7);
-        \fill[blue!30!white]   (210:1.5) circle (1.7);
-        \fill[orange!30!white] (330:1.5) circle (1.7);
-      \end{scope}
-      \node at (90: 1.5) [align=center] {\small Linia \\ melodyczna};
-      \node at (210:1.5) [align=center] {\small Modulacja};
-      \node at (330:1.5) [align=center] {\small Barwa \\ dźwięku};
-      % \node[align=center] { \textbf{Wspólna} \\ \textbf{pętla zdarzeń} \\ \textbf{\texttt{asyncio}}};
-    \end{tikzpicture}
-    \end{center}
-    \caption{
-      Elementy opisujące pojedynczy głos/instrument w kompozycji muzycznej. 
-    }
-    \label{telemetry_backend_asyncio}
-  \end{figure}
-\end{frame}
+% \begin{frame}
+%   \frametitle{Elementy kompozycji muzycznej (w uproszczeniu)}
+%   \begin{figure}[H]
+%     \centering\small
+%     \begin{center}
+%     \begin{tikzpicture}
+%       \begin{scope}[blend group = soft light]
+%         \fill[red!30!white]    ( 90:1.5) circle (1.7);
+%         \fill[blue!30!white]   (210:1.5) circle (1.7);
+%         \fill[orange!30!white] (330:1.5) circle (1.7);
+%       \end{scope}
+%       \node at (90: 1.5) [align=center] {\small Linia \\ melodyczna};
+%       \node at (210:1.5) [align=center] {\small Modulacja};
+%       \node at (330:1.5) [align=center] {\small Barwa \\ dźwięku};
+%       % \node[align=center] { \textbf{Wspólna} \\ \textbf{pętla zdarzeń} \\ \textbf{\texttt{asyncio}}};
+%     \end{tikzpicture}
+%     \end{center}
+%     \caption{
+%       Elementy opisujące pojedynczy głos/instrument w kompozycji muzycznej. 
+%     }
+%     \label{telemetry_backend_asyncio}
+%   \end{figure}
+% \end{frame}
 
 
 \section{Opis i cel pracy}
@@ -116,8 +99,23 @@
 
   \centering
   \Large
-    Wytworzenie grafu przetwarzania sygnałów, generującego dźwięk o określonej \colorbox{blue}{\color{white}\textbf{barwie}}.
-    % Wytworzenie grafu przetwarzania sygnałów, generującego dźwięk o określonej 
+    Wytworzenie grafu przetwarzania sygnałów, który geneneruje dźwięk o określonej \colorbox{blue}{\color{white}\textbf{barwie}}.
+
+  % \vspace{0.5cm}
+
+  \begin{multicols}{2}
+    \begin{figure}
+      \centering
+      \includegraphics[width=1.0\linewidth]{use_case_diagram.png}
+      \caption{Ilustracja przypadku użycia.}
+    \end{figure}
+
+    \begin{figure}
+      \centering
+      \includegraphics[width=0.6\linewidth]{luthier_person.jpg}
+      \caption{Lutmistrz przy pracy.}
+    \end{figure}
+  \end{multicols}
 \end{frame}
 
 
@@ -130,15 +128,36 @@
   \end{figure}
 \end{frame}
 
+
+% \begin{frame}
+%   \frametitle{Czym jest \textbf{barwa} dźwięku?}
+%   \begin{figure}
+%     \centering
+%     \includegraphics[width=0.9\linewidth]{aeuio_spectrogram.png}
+%     \caption{Spektrogram (transformata Fouriera w czasie) dla nagrania samogłosek ,,,a, e, u, i, o''.}
+%   \end{figure}
+% \end{frame}
+
+
 \begin{frame}
-  \frametitle{Czym jest \textbf{barwa} dźwięku?}
+  \frametitle{Problemy rozwiązywane w ramach pracy}
+
+  \begin{multicols}{2}
+
+  \begin{enumerate}
+    \item Jak \textbf{wygenerować} dźwięk?
+    \item Jak \textbf{ocenić}, czy dźwięk spełnia zadane wymagania?
+    \item Jak \textbf{zmodyfikować} generowany dźwięk, aby zbliżyć się do wymaganego brzmienia?
+  \end{enumerate}
+
   \begin{figure}
     \centering
-    \includegraphics[width=0.9\linewidth]{aeuio_spectrogram.png}
-    \caption{Spektrogram (transformata Fouriera w czasie) dla nagrania samogłosek ,,,a, e, u, i, o''.}
+    \includegraphics[width=1.0\linewidth]{minilogue_oscillator.jpg}
+    \caption{Przebieg sygnału dźwiękowego na oscyloskopie.}
   \end{figure}
-\end{frame}
+  \end{multicols}
 
+\end{frame}
 
 \begin{frame}
   \frametitle{Skąd bierze się barwa dźwięku?}
@@ -153,60 +172,114 @@
 \end{frame}
 
 \section{O syntezie dźwięku}
+
+\begin{frame}
+  \frametitle{Architektura instrumentu muzycznego}
+
+  \begin{itemize}
+    \item Generacja sygnału,
+    \item filtracja sygnału,
+    \item efekty dźwiękowe.
+  \end{itemize}
+
+  \begin{figure}
+    \centering
+    \includegraphics[width=0.7\linewidth]{synth_architecture.png}
+
+    \caption{
+      Architektura instrumentu muzycznego.
+    }
+  \end{figure}
+\end{frame}
+
 \begin{frame}
   \frametitle{Jak kontroluje się barwę w syntezatorach dźwięku}
 
   \begin{figure}
     \centering
-    \includegraphics[width=0.9\linewidth]{minilogue_voice_block_diagram.png}
+    % \includegraphics[width=0.9\linewidth]{minilogue_voice_block_diagram.png}
+    \includegraphics[width=0.9\linewidth]{analog_four_diagram.png}
 
     \caption{
       Diagram blokowy pojedynczego głosu w syntezatorze 
-      \textit{Korg~Minilogue~xd} \cite{minilogue_diagram}.
+      \textit{Elektron Analog Four}.
+    }
+  \end{figure}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Jak kontroluje się barwę w syntezatorach dźwięku}
+
+  \begin{figure}
+    \centering
+    % \includegraphics[width=0.9\linewidth]{minilogue_voice_block_diagram.png}
+    \includegraphics[width=0.9\linewidth]{opsix_diagram.png}
+
+    \caption{
+      Diagram blokowy pojedynczego głosu w syntezatorze 
+      \textit{Korg Opsix}.
+    }
+  \end{figure}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Jak kontroluje się barwę w syntezatorach dźwięku}
+
+  \begin{figure}
+    \centering
+    % \includegraphics[width=0.9\linewidth]{minilogue_voice_block_diagram.png}
+    \includegraphics[width=0.9\linewidth]{modwave_diagram.png}
+
+    \caption{
+      Diagram blokowy pojedynczego głosu w syntezatorze 
+      \textit{Korg Modwave}.
     }
   \end{figure}
 \end{frame}
 
 
-\begin{frame}
-  \frametitle{Generalizacja tradycyjnego procesu syntezy dźwięku}
 
-  \begin{enumerate}
-    \item Bloki generujące sygnał:
-      \begin{enumerate}
-        \item synteza prostych sygnałów (sinus, trójkąt, prostokątny),
-        \item odtwarzanie sampli dźwiękowych,
-        \item sygnał modulujący (rytm, \textit{ADSR}).
-      \end{enumerate}
-    \item Bloki przetwarzające sygnał:
-      \begin{enumerate}
-        \item filtry (górnoprzepustowy, dolnoprzepustowy, itd.),
-        \item efekty (pogłos, echo).
-      \end{enumerate}
-    \item Połączenia między blokami:
-      \begin{enumerate}
-        \item modulowanie parametrów generacji/przetwarzania sygnału.
-      \end{enumerate}
-  \end{enumerate}
-\end{frame}
 
-\begin{frame}
-  \frametitle {Synteza oparta o moduły}
 
-  \begin{multicols}{2}
-  \begin{figure}
-    \centering
-    \includegraphics[width=0.6\linewidth]{bespoke.png}
-    \caption{Oprogamowanie \textit{Bespoke}.}
-  \end{figure}
+% \begin{frame}
+%   \frametitle{Generalizacja tradycyjnego procesu syntezy dźwięku}
 
-  \begin{figure}
-    \centering
-    \includegraphics[width=0.9\linewidth]{modular-synth.jpg}
-    \caption{Syntezator modułowy.}
-  \end{figure}
-  \end{multicols}
-\end{frame}
+%   \begin{enumerate}
+%     \item Bloki generujące sygnał:
+%       \begin{enumerate}
+%         \item synteza prostych sygnałów (sinus, trójkąt, prostokątny),
+%         \item odtwarzanie sampli dźwiękowych,
+%         \item sygnał modulujący (rytm, \textit{ADSR}).
+%       \end{enumerate}
+%     \item Bloki przetwarzające sygnał:
+%       \begin{enumerate}
+%         \item filtry (górnoprzepustowy, dolnoprzepustowy, itd.),
+%         \item efekty (pogłos, echo).
+%       \end{enumerate}
+%     \item Połączenia między blokami:
+%       \begin{enumerate}
+%         \item modulowanie parametrów generacji/przetwarzania sygnału.
+%       \end{enumerate}
+%   \end{enumerate}
+% \end{frame}
+
+% \begin{frame}
+%   \frametitle {Synteza oparta o moduły}
+
+%   \begin{multicols}{2}
+%   \begin{figure}
+%     \centering
+%     \includegraphics[width=0.6\linewidth]{bespoke.png}
+%     \caption{Oprogamowanie \textit{Bespoke}.}
+%   \end{figure}
+
+%   \begin{figure}
+%     \centering
+%     \includegraphics[width=0.9\linewidth]{modular-synth.jpg}
+%     \caption{Syntezator modułowy.}
+%   \end{figure}
+%   \end{multicols}
+% \end{frame}
 
 \begin{frame}
   \frametitle{Jak algorytmicznie wyworzyć układ DSP generujący zadany dźwięk?}
@@ -219,75 +292,95 @@
 \end{frame}
 
 
-\section{Aspekt badawczy pracy}
+\section{Owoce pracy}
 \begin{frame}
-  \frametitle{Aspekt badawczy pracy}
-  
-  \textbf{Do końca maja:}
+  \frametitle{Owoce pracy - silnik syntezy}
+
+  \vspace{-0.5cm}
+
+  \begin{figure}
+    \centering
+    \includegraphics[width=0.8\linewidth]{example_synth.png}
+    \caption{Przykładowy graf DSP wygenerowany w środowisku eksperymentowym.}
+  \end{figure}
+
+  \vspace{-0.5cm}
+
   \begin{itemize}
-    \item reprezentacja grafu przetwarzania sygnałów \cite{puredata}:
-      \begin{itemize}
-        \item pozwalająca na automatyczne modyfikacje grafu,
-        \item zachowująca ,,sens'' w domenie syntezy dźwięku.
-      \end{itemize}
-  \end{itemize}
-
-  \textbf{Do końca kwietnia:}
-  \begin{itemize}
-    \item analiza dostępnych algorytmów porównujących barwę dźwięku \cite{music_identification} \cite{sliding_fourier} \cite{ddx7},
-    \item wybór funkcji celu spośród przeanalizowanych algorytmów,
-    \item wybór algorytmu optymalizującego parametry wewnątrz grafu.
-  \end{itemize}
-
-\end{frame}
-
-
-\section{Aspekt inżynierski pracy}
-\begin{frame}
-  \frametitle{Aspekt inżynierski pracy}
-
-  \textbf{Już gotowe:}
-  \begin{itemize}
-    \item Implementacja bazowych algorytmów DSP w wydajnym,
-      kompilowanym języku \includegraphics[scale=0.45]{rust.jpg}.
-  \end{itemize}\\
-
-  \textbf{Do końca maja:}
-  \begin{itemize}
-    \item generyczny algorytm syntezy dźwięku na podstawie grafu DSP,
-    \item interfejs graficzny, wizualizacja grafu.
+    \item Implementacja w wydajnym, kompilowanym języku \texttt{Rust},
+    \item Natywna biblioteka dla języka \texttt{Python},
+    \item Generuje struktury danych z pakietu obliczeniowego \texttt{numpy}.
   \end{itemize}
 \end{frame}
 
-\begin{frame}
-  \frametitle{Aspekt inżynierski pracy}
-  \textbf{Do końca kwietnia:}
-  \begin{itemize}
-    \item integracja algorytmu syntezy z API języka \texttt{Python},
-    \item implementacja/integracja algorytmów ,,oceniających'' bliskość dźwięku do zadanej próbki,
-    \item wykorzystanie narzędzi optymalizacyjnych z pakietów obliczeniowych języka \texttt{Python} do optymalizacji grafu DSP.
-  \end{itemize}
-\end{frame}
 
-\section{Analiza podobnych prac}
 \begin{frame}
-  \frametitle{Podobne prace}
+  \frametitle{Owoce pracy - porównanie sygnałów pod względem barwy, czyli funkcja celu}
+
   \begin{multicols}{2}
-    \textbf{Automatic design of sound synthesizers (...) \cite{puredata}}
-    \begin{itemize}
-      \item Niewielki zbiór testowanych operacji DSP w grafie,
-      \item wykorzystanie tylko \texttt{MFCC} jako funkcji celu,
-      \item słabe wyniki dla dźwięków o spektrum zmiennym w czasie.
-    \end{itemize}
+  \begin{figure}
+    \centering
+    \includegraphics[width=1.0\linewidth]{example_signal_comparison.png}
+    \caption{Porównanie sygnałów.}
+  \end{figure}
 
-    \textbf{DDX7: Differentiable FM Synthesis (...) \cite{ddx7}}
-    \begin{itemize}
-      \item Wykorzystanie tylko jednego algorytmu syntezy (\texttt{FM}),
-      \item zadana z góry struktura grafu DSP,
-      \item sieć neuronowa jako źródło modulacji.
-    \end{itemize}
+  % co sie tu kurwa dzieje
+    \textbf{Porównywane cechy sygnału:}
+    \begin{enumerate}
+      \item Spektrum Fouriera,
+      \item \textit{Mel-frequency cepstrum},
+      \item \textit{CQT} \cite{cqt}.
+    \end{enumerate}
+  
   \end{multicols}
 \end{frame}
+
+
+\section{Ocena stanu pracy}
+
+\begin{frame}
+  \frametitle{Osiągnięte cele}
+
+  \begin{enumerate}
+    \item Wytworzenie elastycznego silnika do tworzenia grafów DSP,
+    \item Ewolucja parametrów grafu wykonującego syntezę \texttt{FM},
+    \item Ewolucja parametrów grafu wykonującego syntezę \texttt{virtual analog},
+    \item Ewolucja struktury grafu wykonującego \textit{właściwy} typ syntezy (zależnie od próbki wejściowej).
+  \end{enumerate}
+\end{frame}
+
+
+\begin{frame}
+  \frametitle{Dalszy harmonogram realizacji pracy}
+
+  \begin{enumerate}
+    \item \textbf{Cel został osiągnięty}: opracowany algorytm generuje grafy DSP, które upodobniają się do zadanych próbek dźwięku:
+      \begin{itemize}
+        \item Wciąż możliwe jest poprawienie dokładności,
+        \item Wciąż możliwe jest przyspieszenie czasu trenowania,
+        \item Wciąż można implementować nowe bloki DSP,
+      \end{itemize}
+    \item Postęp w pisaniu pracy: $\sim$15\%.
+  \end{enumerate}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Potencjalne kierunki dalszego rozwoju}
+
+  \begin{enumerate}
+    \item Wykorzystanie \texttt{STFT}\cite{sliding_fourier} do syntezy dźwięków perkusyjnych,
+    \item Przetestowanie kolejnych bloków DSP:
+      \begin{itemize}
+        \item \textit{Physical Modeling},
+        \item \textit{Multimode filters},
+        \item \textit{Reverb with pitch shifting},
+      \end{itemize}
+    \item Implementacja funkcji celu na \texttt{GPU},
+    \item Szkolenie sieci neuronowej na przestrzeni dźwiękowej danego syntezatora, na wzór \cite{multi_task_synth_programming},
+    \item Inkrementalne trenowanie na coraz dłuższych fragmentach docelowej próbki,
+  \end{enumerate}
+\end{frame}
+
 
 
 \section{Bibliografia}
@@ -312,9 +405,9 @@
 
 \begin{frame}
   \begin{thebibliography}{99} % Beamer does not support BibTeX so references must be nserted manually as below
-  \bibitem[Korg, 2019]{minilogue_diagram} Korg Inc,
-  \newblock Korg Minilogue xd User Manual
-  \newblock \url{https://www.korg.com/us/support/download/manual/0/811/4277/}
+  \bibitem[Faronbi, 2023]{multi_task_synth_programming} Faronbi, Daniel and Roman, Iran and Bello, Juan Pablo,
+  \newblock Exploring Approaches to Multi-Task Automatic Synthesizer Programming
+  \newblock \url{10.1109/ICASSP49357.2023.10095540}
 
   \bibitem[Yan]{music_identification} Yan Ke and Hoiem, D. and Sukthankar, R.
   \newblock Computer vision for music identification
@@ -338,6 +431,10 @@
     \newblock The Sliding Fourier
     \newblock \texttt{10.1109/MSP.2003.1184347}
 
+    \bibitem[Shoerkhuber]{cqt} Christian, and Anssi Klapuri.
+    \newblock Constant-Q transform toolbox for music processing
+    \newblock \texttt{7th Sound and Music Computing Conference, Barcelona, Spain. 2010}
+
   \end{thebibliography}
 \end{frame}
 
@@ -346,8 +443,8 @@
 
   \vspace{-0.5cm}
   \begin{figure}
-    \includegraphics[width=0.4\linewidth]{ending.png}
-    \caption{Obraz wygenerowany przez \texttt{DALL-E} dla promptu ,,\textit{futuristic musical instrument}''.}
+    \includegraphics[width=0.4\linewidth]{van_gogh_synth.png}
+    \caption{Obraz wygenerowany przez \texttt{DALL-E} dla promptu ,,\textit{sound synthesizer drawn in in style of van Gogh}''.}
   \end{figure}
 
   \centering
@@ -357,15 +454,23 @@
     % Wytworzenie grafu przetwarzania sygnałów, generującego dźwięk o określonej 
 \end{frame}
 
-% \begin{frame}
-%   \begin{thebibliography}{99} % Beamer does not support BibTeX so references must be nserted manually as below
-%   \bibitem[Shetty, 2017]{gartner2} Sony Shetty (2017)
-%   \newblock How to Start an IT Monitoring Initiative
-%   \newblock \emph{Gartner Insights}
-%   \newblock \url{https://www.gartner.com/smarterwithgartner/how-to-start-an-it-monitoring-initiative}
+\begin{frame}
+  \frametitle{Deklaracja}
 
-%   \end{thebibliography}
-% \end{frame}
+  % \vspace{-0.5cm}
+  % \begin{figure}
+  %   \includegraphics[width=0.4\linewidth]{van_gogh_synth.png}
+  %   \caption{Obraz wygenerowany przez \texttt{DALL-E} dla promptu ,,\textit{sound synthesizer drawn in in style of van Gogh}''.}
+  % \end{figure}
+  {
+  \Large
+  Deklaruję, iż uda się ukończyć pracę przed wyznaczonym terminem obrony.
+  }
+
+  $\sim$ Mateusz Bączek
+    % \colorbox{blue}{\color{white}\textbf{Dziękuję za uwagę!}}
+    % Wytworzenie grafu przetwarzania sygnałów, generującego dźwięk o określonej 
+\end{frame}
 
 \end{document}
 
