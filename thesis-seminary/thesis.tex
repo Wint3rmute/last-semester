@@ -17,7 +17,7 @@
 \title{Opracowanie algorytmu generacji grafu DSP do rozwiązania problemu syntezy dźwięku}
 \subtitle{Design of a DSP graph generation algorithm for solving the sound synthesis problem}
 \author{Autor pracy: Mateusz Bączek \\ Opiekun pracy: Dr Inż. Maciej Hojda}
-\institute{Seminarium Dyplomowe -- prezentacja 1}
+% \institute{Seminarium Dyplomowe -- prezentacja 1}
 \date{2023}
 
 \begin{document}
@@ -103,19 +103,19 @@
 
   % \vspace{0.5cm}
 
-  \begin{multicols}{2}
+  % \begin{multicols}{2}
     \begin{figure}
       \centering
-      \includegraphics[width=1.0\linewidth]{use_case_diagram.png}
+      \includegraphics[width=0.4\linewidth]{use_case_diagram.png}
       \caption{Ilustracja przypadku użycia.}
     \end{figure}
 
-    \begin{figure}
-      \centering
-      \includegraphics[width=0.6\linewidth]{luthier_person.jpg}
-      \caption{Lutmistrz przy pracy.}
-    \end{figure}
-  \end{multicols}
+    % \begin{figure}
+    %   \centering
+    %   \includegraphics[width=0.6\linewidth]{luthier_person.jpg}
+    %   \caption{Lutmistrz przy pracy.}
+    % \end{figure}
+  % \end{multicols}
 \end{frame}
 
 
@@ -325,12 +325,11 @@
   \end{figure}
 
   % co sie tu kurwa dzieje
-    \textbf{Porównywane cechy sygnału:}
-    \begin{enumerate}
-      \item Spektrum Fouriera,
+    \textbf{Wykorzystana funkcja celu: MFCC + DTW}. \\
+    \begin{itemize}
       \item \textit{Mel-frequency cepstrum},
-      \item \textit{CQT} \cite{cqt}.
-    \end{enumerate}
+      \item \textit{dynamic time warping}.
+    \end{itemize}
   
   \end{multicols}
 \end{frame}
@@ -342,7 +341,7 @@
   \frametitle{Osiągnięte cele}
 
   \begin{enumerate}
-    \item Wytworzenie elastycznego silnika do tworzenia grafów DSP,
+    \item Wytworzenie silnika do tworzenia grafów DSP,
     \item Ewolucja parametrów grafu wykonującego syntezę \texttt{FM},
     \item Ewolucja parametrów grafu wykonującego syntezę \texttt{virtual analog},
     \item Ewolucja struktury grafu wykonującego \textit{właściwy} typ syntezy (zależnie od próbki wejściowej).
@@ -350,33 +349,26 @@
 \end{frame}
 
 
-\begin{frame}
-  \frametitle{Dalszy harmonogram realizacji pracy}
+% \begin{frame}
+%   \frametitle{Dalszy harmonogram realizacji pracy}
 
-  \begin{enumerate}
-    \item \textbf{Cel został osiągnięty}: opracowany algorytm generuje grafy DSP, które upodobniają się do zadanych próbek dźwięku:
-      \begin{itemize}
-        \item Wciąż możliwe jest poprawienie dokładności,
-        \item Wciąż możliwe jest przyspieszenie czasu trenowania,
-        \item Wciąż można implementować nowe bloki DSP,
-      \end{itemize}
-    \item Postęp w pisaniu pracy: $\sim$15\%.
-  \end{enumerate}
-\end{frame}
+%   \begin{enumerate}
+%     \item \textbf{Cel został osiągnięty}: opracowany algorytm generuje grafy DSP, które upodobniają się do zadanych próbek dźwięku:
+%       \begin{itemize}
+%         \item Wciąż możliwe jest poprawienie dokładności,
+%         \item Wciąż możliwe jest przyspieszenie czasu trenowania,
+%         \item Wciąż można implementować nowe bloki DSP,
+%       \end{itemize}
+%     \item Postęp w pisaniu pracy: $\sim$15\%.
+%   \end{enumerate}
+% \end{frame}
 
 \begin{frame}
   \frametitle{Potencjalne kierunki dalszego rozwoju}
 
   \begin{enumerate}
-    \item Wykorzystanie \texttt{STFT}\cite{sliding_fourier} do syntezy dźwięków perkusyjnych,
-    \item Przetestowanie kolejnych bloków DSP:
-      \begin{itemize}
-        \item \textit{Physical Modeling},
-        \item \textit{Multimode filters},
-        \item \textit{Reverb with pitch shifting},
-      \end{itemize}
-    \item Implementacja funkcji celu na \texttt{GPU},
-    \item Szkolenie sieci neuronowej na przestrzeni dźwiękowej danego syntezatora, na wzór \cite{multi_task_synth_programming},
+    \item Przetestowanie alternatywnych struktur genotypu reprezentującego strukturę grafu,
+    \item Implementacja funkcji celu na \texttt{GPU}~\cite{gpu_fft},
     \item Inkrementalne trenowanie na coraz dłuższych fragmentach docelowej próbki,
   \end{enumerate}
 \end{frame}
@@ -431,9 +423,9 @@
     \newblock The Sliding Fourier
     \newblock \texttt{10.1109/MSP.2003.1184347}
 
-    \bibitem[Shoerkhuber]{cqt} Christian, and Anssi Klapuri.
-    \newblock Constant-Q transform toolbox for music processing
-    \newblock \texttt{7th Sound and Music Computing Conference, Barcelona, Spain. 2010}
+    \bibitem[Nvidia]{gpu_fft} NVIDIA Corporation & Affiliates.
+    \newblock NVIDIA® CUDA® Fast Fourier Transform (FFT)
+    \newblock \url{https://docs.nvidia.com/cuda/cufft/index.html}
 
   \end{thebibliography}
 \end{frame}
@@ -443,8 +435,8 @@
 
   \vspace{-0.5cm}
   \begin{figure}
-    \includegraphics[width=0.4\linewidth]{van_gogh_synth.png}
-    \caption{Obraz wygenerowany przez \texttt{DALL-E} dla promptu ,,\textit{sound synthesizer drawn in in style of van Gogh}''.}
+    \includegraphics[width=0.4\linewidth]{./synth_graduating_from_uni.png}
+    \caption{Obraz wygenerowany przez \texttt{DALL-E} dla promptu ,,\textit{sound synthesizer graduating from university}''.}
   \end{figure}
 
   \centering
@@ -454,23 +446,23 @@
     % Wytworzenie grafu przetwarzania sygnałów, generującego dźwięk o określonej 
 \end{frame}
 
-\begin{frame}
-  \frametitle{Deklaracja}
+% \begin{frame}
+%   \frametitle{Deklaracja}
 
-  % \vspace{-0.5cm}
-  % \begin{figure}
-  %   \includegraphics[width=0.4\linewidth]{van_gogh_synth.png}
-  %   \caption{Obraz wygenerowany przez \texttt{DALL-E} dla promptu ,,\textit{sound synthesizer drawn in in style of van Gogh}''.}
-  % \end{figure}
-  {
-  \Large
-  Deklaruję, iż uda się ukończyć pracę przed wyznaczonym terminem obrony.
-  }
+%   % \vspace{-0.5cm}
+%   % \begin{figure}
+%   %   \includegraphics[width=0.4\linewidth]{van_gogh_synth.png}
+%   %   \caption{Obraz wygenerowany przez \texttt{DALL-E} dla promptu ,,\textit{sound synthesizer drawn in in style of van Gogh}''.}
+%   % \end{figure}
+%   {
+%   \Large
+%   Deklaruję, iż uda się ukończyć pracę przed wyznaczonym terminem obrony.
+%   }
 
-  $\sim$ Mateusz Bączek
-    % \colorbox{blue}{\color{white}\textbf{Dziękuję za uwagę!}}
-    % Wytworzenie grafu przetwarzania sygnałów, generującego dźwięk o określonej 
-\end{frame}
+%   $\sim$ Mateusz Bączek
+%     % \colorbox{blue}{\color{white}\textbf{Dziękuję za uwagę!}}
+%     % Wytworzenie grafu przetwarzania sygnałów, generującego dźwięk o określonej 
+% \end{frame}
 
 \end{document}
 
